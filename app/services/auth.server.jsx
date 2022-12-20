@@ -1,13 +1,13 @@
 // app/services/auth.server.ts
 import { Authenticator, AuthorizationError } from 'remix-auth';
 import { FormStrategy } from 'remix-auth-form';
-import { sessionStorage, User } from '~/services/session.server';
+import { sessionStorage } from '~/services/session.server';
 
 // Create an instance of the authenticator, pass a Type, User,  with what
 // strategies will return and will store in the session
 const authenticator = new Authenticator(sessionStorage, {
-  sessionKey: "sessionKey", // keep in sync
-  sessionErrorKey: "sessionErrorKey", // keep in sync
+  sessionKey: "sessionKey", // creating a variable to store the user data
+  sessionErrorKey: "sessionErrorKey", // all errors will be store in this key
 });
 
 // Tell the Authenticator to use the form strategy
@@ -48,6 +48,7 @@ authenticator.use(
     }
 
   }),
+  "user-pass"
 );
 
 export default authenticator

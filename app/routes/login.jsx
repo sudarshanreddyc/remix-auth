@@ -13,7 +13,7 @@ import {
    */
   export const action = async ({ request, context }) => {
     // call my authenticator
-    const resp = await authenticator.authenticate("form", request, {
+    const resp = await authenticator.authenticate("user-pass", request, {
       successRedirect: "/",
       failureRedirect: "/login",
       throwOnError: true,
